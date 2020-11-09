@@ -1,6 +1,6 @@
 ***
 
-![MainForm](ImgForReadme/MainForm.png)
+![MainForm](imgForReadme/MainForm.png)
 
 ---
 
