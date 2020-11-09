@@ -1,4 +1,4 @@
-﻿***
+***
 
 ![MainForm](ImgForReadme/MainForm.png)
 
