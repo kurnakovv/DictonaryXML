@@ -66,6 +66,7 @@
             this.listView1.Size = new System.Drawing.Size(371, 357);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.List;
             // 
             // panel1
             // 
@@ -153,10 +154,13 @@
             // 
             // comboBox2
             // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
+            "- - -",
             "Masculine",
-            "Feminine"});
+            "Feminine",
+            "Neuter"});
             this.comboBox2.Location = new System.Drawing.Point(21, 192);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(315, 21);
@@ -164,6 +168,7 @@
             // 
             // comboBox1
             // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Noun",
@@ -254,6 +259,7 @@
             this.AddNewWordBtn.TabIndex = 4;
             this.AddNewWordBtn.Text = "Add new word";
             this.AddNewWordBtn.UseVisualStyleBackColor = false;
+            this.AddNewWordBtn.Click += new System.EventHandler(this.AddNewWordBtn_Click);
             // 
             // SearchTextBox
             // 
