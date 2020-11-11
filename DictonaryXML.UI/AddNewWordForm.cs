@@ -59,9 +59,7 @@ namespace DictonaryXML.UI
                                      DescriptionTextBox.Text);
 
                 if (!string.IsNullOrEmpty(MainWordTextBox.Text)
-                    && !string.IsNullOrEmpty(TranslationWordTextBox.Text)
-                    && !string.IsNullOrEmpty(comboBox1.Text)
-                    && !string.IsNullOrEmpty(DescriptionTextBox.Text))
+                    && !string.IsNullOrEmpty(TranslationWordTextBox.Text))
                 {
                     form1.AddWord(word);
                     this.Close();
