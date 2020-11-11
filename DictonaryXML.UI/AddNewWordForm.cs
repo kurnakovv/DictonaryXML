@@ -48,8 +48,8 @@ namespace DictonaryXML.UI
         private void FillFields()
         {
             var msb = MessageBoxButtons.YesNo;
-            string message = "Вы действительно хотите добавить слово?";
-            string caption = "Добавить слово";
+            string message = "Do you really want to add a word?";
+            string caption = "Add word";
             if (MessageBox.Show(message, caption, msb) == DialogResult.Yes)
             {
                 Word word = new Word(MainWordTextBox.Text,
