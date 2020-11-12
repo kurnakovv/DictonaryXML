@@ -18,6 +18,7 @@ namespace DictonaryXML.UI
     {
         private const string _fillFields = "Fill fields!";
         private const string _successfulChange = "Word change was successful!";
+        private const string _successfulDelete = "Word delete was successful!";
         public Form1()
         {
             InitializeComponent();
@@ -33,6 +34,11 @@ namespace DictonaryXML.UI
         private void EditBtn_Click(object sender, EventArgs e)
         {
             EditWord();
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            DeleteWord();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -54,11 +60,13 @@ namespace DictonaryXML.UI
             {
                 CheckWordForNull();
                 EditBtn.Visible = true;
+                DeleteBtn.Visible = true;
             }
             else if (listView1.SelectedItems.Count == 0)
             {
                 ClearInput();
                 EditBtn.Visible = false;
+                DeleteBtn.Visible = false;
             }
             label6.Text = string.Empty;
             label6.BackColor = Color.FromArgb(180, 180, 180);
@@ -107,6 +115,19 @@ namespace DictonaryXML.UI
             }
         }
 
+        private void DeleteWord()
+        {
+            var msb = MessageBoxButtons.YesNo;
+            string message = "Are you sure you want to delete the word?";
+            string caption = "Delete word";
+            if (MessageBox.Show(message, caption, msb) == DialogResult.Yes)
+            {
+                RemoveWord();
+                label6.BackColor = Color.Orange;
+                label6.Text = _successfulDelete;
+            }
+        }
+
         private void ClearInput()
         {
             MainWordTextBox.Text = string.Empty;
@@ -119,6 +140,6 @@ namespace DictonaryXML.UI
         private void RemoveWord()
         {
             listView1.Items.RemoveAt(listView1.SelectedIndices[0]);
-        }
+        }       
     }
 }
