@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.listView1 = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -52,7 +53,7 @@
             this.AddNewWordBtn = new System.Windows.Forms.Button();
             this.SearchTextBox = new System.Windows.Forms.TextBox();
             this.SearchBtn = new System.Windows.Forms.Button();
-            this.DeleteBtn = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -93,6 +94,18 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(351, 357);
             this.panel1.TabIndex = 1;
+            // 
+            // DeleteBtn
+            // 
+            this.DeleteBtn.BackColor = System.Drawing.Color.Red;
+            this.DeleteBtn.Location = new System.Drawing.Point(273, 317);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBtn.TabIndex = 12;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseVisualStyleBackColor = false;
+            this.DeleteBtn.Visible = false;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // label6
             // 
@@ -292,18 +305,16 @@
             this.SearchBtn.TabIndex = 7;
             this.SearchBtn.Text = "Search";
             this.SearchBtn.UseVisualStyleBackColor = false;
+            this.SearchBtn.Click += new System.EventHandler(this.SearchBtn_Click);
             // 
-            // DeleteBtn
+            // label7
             // 
-            this.DeleteBtn.BackColor = System.Drawing.Color.Red;
-            this.DeleteBtn.Location = new System.Drawing.Point(273, 317);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
-            this.DeleteBtn.TabIndex = 12;
-            this.DeleteBtn.Text = "Delete";
-            this.DeleteBtn.UseVisualStyleBackColor = false;
-            this.DeleteBtn.Visible = false;
-            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.label7.Location = new System.Drawing.Point(13, 33);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(0, 13);
+            this.label7.TabIndex = 8;
             // 
             // Form1
             // 
@@ -311,6 +322,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(757, 450);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.SearchBtn);
             this.Controls.Add(this.SearchTextBox);
             this.Controls.Add(this.AddNewWordBtn);
@@ -357,6 +369,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button DeleteBtn;
+        private System.Windows.Forms.Label label7;
     }
 }
 

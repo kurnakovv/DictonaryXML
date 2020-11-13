@@ -19,6 +19,7 @@ namespace DictonaryXML.UI
         private const string _fillFields = "Fill fields!";
         private const string _successfulChange = "Word change was successful!";
         private const string _successfulDelete = "Word delete was successful!";
+        public string _searchText = "All words with the text: ";
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +30,7 @@ namespace DictonaryXML.UI
         {
             var form = new AddNewWordForm(this);
             form.ShowDialog();
-        }        
+        }
 
         private void EditBtn_Click(object sender, EventArgs e)
         {
@@ -39,6 +40,11 @@ namespace DictonaryXML.UI
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
             DeleteWord();
+        }
+
+        private void SearchBtn_Click(object sender, EventArgs e)
+        {
+            SearchWord(SearchTextBox.Text);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -135,11 +141,40 @@ namespace DictonaryXML.UI
             comboBox1.SelectedIndex = 0;
             comboBox2.SelectedIndex = 0;
             DescriptionTextBox.Text = string.Empty;
-        }  
-        
+            SearchTextBox.Text = string.Empty;
+        }
+
         private void RemoveWord()
         {
             listView1.Items.RemoveAt(listView1.SelectedIndices[0]);
-        }       
+        }
+
+        private void SearchWord(string searchWord)
+        {
+            foreach (ListViewItem listViewItem in listView1.Items)
+            {
+                if (listViewItem.ToString().Contains(searchWord) 
+                    && !string.IsNullOrEmpty(searchWord))
+                {
+                    listViewItem.BackColor = Color.Green;
+                    listViewItem.ForeColor = Color.White;
+                    label7.Text = _searchText + 
+                                  $"\"{searchWord}\"";
+                }
+                else if(string.IsNullOrEmpty(searchWord)) 
+                {
+                    listViewItem.BackColor = Color.Silver;
+                    listViewItem.ForeColor = Color.Black;
+                    label7.Text = string.Empty;
+                }
+                else
+                {
+                    listViewItem.BackColor = Color.Silver;
+                    listViewItem.ForeColor = Color.Black;
+                }
+            }
+
+            ClearInput();
+        }
     }
 }
