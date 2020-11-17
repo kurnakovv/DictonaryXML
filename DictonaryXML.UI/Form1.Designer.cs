@@ -254,21 +254,23 @@
             // 
             this.downloadshowListToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.downloadshowListToolStripMenuItem.Name = "downloadshowListToolStripMenuItem";
-            this.downloadshowListToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.downloadshowListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.downloadshowListToolStripMenuItem.Text = "Load (show list)";
+            this.downloadshowListToolStripMenuItem.Click += new System.EventHandler(this.downloadshowListToolStripMenuItem_Click);
             // 
             // saveListToolStripMenuItem
             // 
             this.saveListToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.saveListToolStripMenuItem.Name = "saveListToolStripMenuItem";
-            this.saveListToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.saveListToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveListToolStripMenuItem.Text = "Save list";
+            this.saveListToolStripMenuItem.Click += new System.EventHandler(this.saveListToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // helpToolStripMenuItem

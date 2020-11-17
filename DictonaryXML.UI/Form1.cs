@@ -1,4 +1,5 @@
-﻿using DictonaryXML.Domain.Entities;
+﻿using DictonaryXML.Domain;
+using DictonaryXML.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace DictonaryXML.UI
@@ -20,10 +22,19 @@ namespace DictonaryXML.UI
         private const string _successfulChange = "Word change was successful!";
         private const string _successfulDelete = "Word delete was successful!";
         public string _searchText = "All words with the text: ";
+
+        private readonly SerializeDeserializeXML _serializeDeserializeXML = new SerializeDeserializeXML();
+
         public Form1()
         {
             InitializeComponent();
             ClearInput();
+            DownloadDataFromXML();
+        }
+
+        public Form1(SerializeDeserializeXML serializeDeserializeXML)
+        {
+            _serializeDeserializeXML = serializeDeserializeXML;
         }
 
         private void AddNewWordBtn_Click(object sender, EventArgs e)
@@ -52,12 +63,23 @@ namespace DictonaryXML.UI
             SelectWord();
         }
 
+        private void downloadshowListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DownloadDataFromXML();            
+        }
+
+        private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveDataInXML();
+        }
+
         internal void AddWord(Word word)
         {
             var listWords = new ListViewItem($"{word.MainWord} - {word.TranslationWord}");
             listWords.Tag = word;
 
             listView1.Items.Add(listWords);
+            SaveDataInXML();
         }
 
         private void SelectWord()
@@ -108,8 +130,9 @@ namespace DictonaryXML.UI
                 if (!string.IsNullOrEmpty(MainWordTextBox.Text)
                     && !string.IsNullOrEmpty(TranslationWordTextBox.Text))
                 {
-                    AddWord(word);
                     RemoveWord();
+                    AddWord(word);                    
+                    SaveDataInXML();
                     label6.BackColor = Color.Green;
                     label6.Text = _successfulChange;
                 }
@@ -129,6 +152,7 @@ namespace DictonaryXML.UI
             if (MessageBox.Show(message, caption, msb) == DialogResult.Yes)
             {
                 RemoveWord();
+                SaveDataInXML();
                 label6.BackColor = Color.Orange;
                 label6.Text = _successfulDelete;
             }
@@ -142,6 +166,11 @@ namespace DictonaryXML.UI
             comboBox2.SelectedIndex = 0;
             DescriptionTextBox.Text = string.Empty;
             SearchTextBox.Text = string.Empty;
+        }
+
+        private void ClearListView()
+        {
+            listView1.Items.Clear();
         }
 
         private void RemoveWord()
@@ -175,6 +204,34 @@ namespace DictonaryXML.UI
             }
 
             ClearInput();
+        }
+
+        private void SaveDataInXML()
+        {
+            var words = new Words();
+
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.Tag != null)
+                {
+                    words.WordsList.Add((Word)item.Tag);
+                }
+            }
+
+            _serializeDeserializeXML.SerializeXML(words);
+        }
+
+        private void DownloadDataFromXML()
+        {
+            ClearInput();
+            ClearListView();
+
+            Words words = _serializeDeserializeXML.DeserializeXML();
+
+            foreach (Word word in words.WordsList)
+            {
+                AddWord(word);
+            }
         }
     }
 }

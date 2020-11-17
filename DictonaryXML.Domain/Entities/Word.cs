@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace DictonaryXML.Domain.Entities
 {
+    [Serializable]
     public class Word
     {
         public string MainWord { get; set; }
