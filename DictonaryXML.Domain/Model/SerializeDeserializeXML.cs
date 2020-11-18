@@ -14,7 +14,11 @@ namespace DictonaryXML.Domain
         public void SerializeXML(Words words)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Words));
-
+            
+            if (File.Exists("Words.xml"))
+            {
+                File.Delete("Words.xml");
+            }
             using (var fs = new FileStream("Words.xml", FileMode.OpenOrCreate))
             {
                 xmlSerializer.Serialize(fs, words);

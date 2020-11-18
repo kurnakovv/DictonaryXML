@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
@@ -28,7 +29,6 @@ namespace DictonaryXML.UI
         public Form1()
         {
             InitializeComponent();
-            ClearInput();
             DownloadDataFromXML();
         }
 
@@ -61,16 +61,6 @@ namespace DictonaryXML.UI
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectWord();
-        }
-
-        private void downloadshowListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            DownloadDataFromXML();            
-        }
-
-        private void saveListToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveDataInXML();
         }
 
         internal void AddWord(Word word)
@@ -131,8 +121,7 @@ namespace DictonaryXML.UI
                     && !string.IsNullOrEmpty(TranslationWordTextBox.Text))
                 {
                     RemoveWord();
-                    AddWord(word);                    
-                    SaveDataInXML();
+                    AddWord(word);
                     label6.BackColor = Color.Green;
                     label6.Text = _successfulChange;
                 }
