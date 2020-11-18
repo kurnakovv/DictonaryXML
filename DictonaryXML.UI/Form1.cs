@@ -63,6 +63,21 @@ namespace DictonaryXML.UI
             SelectWord();
         }
 
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new HelpForm();
+            form.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBoxButtons msb = MessageBoxButtons.YesNo;
+            string message = "Are you sure want to exit?";
+            string caption = "Exit";
+            if (MessageBox.Show(message, caption, msb) == DialogResult.Yes)
+                Close();
+        }
+
         internal void AddWord(Word word)
         {
             var listWords = new ListViewItem($"{word.MainWord} - {word.TranslationWord}");
@@ -221,6 +236,6 @@ namespace DictonaryXML.UI
             {
                 AddWord(word);
             }
-        }
+        }       
     }
 }
