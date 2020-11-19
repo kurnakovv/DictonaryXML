@@ -92,12 +92,14 @@ namespace DictonaryXML.UI
             if (listView1.SelectedItems.Count == 1)
             {
                 CheckWordForNull();
+                panel1.Visible = true;
                 EditBtn.Visible = true;
                 DeleteBtn.Visible = true;
             }
             else if (listView1.SelectedItems.Count == 0)
             {
                 ClearInput();
+                panel1.Visible = false;
                 EditBtn.Visible = false;
                 DeleteBtn.Visible = false;
             }
